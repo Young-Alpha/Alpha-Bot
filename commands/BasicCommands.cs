@@ -18,14 +18,14 @@ namespace ConsoleApp1.commands
         }
         [Command("Beam")]
         [Description("will be probably made more proper at some point when i finish it")]
-        public async Task beam(CommandContext ctx, DiscordMember User, string Nickname)
+        public async Task Beam(CommandContext ctx, DiscordMember User, [RemainingText] string Nickname)
         {
             DiscordMember discordMember = User;
             var OldNick = discordMember.Nickname;
             await ctx.TriggerTypingAsync();
             try
             {
-                await discordMember.ModifyAsync(x => x.Nickname = Nickname);
+                await discordMember.ModifyAsync(x => x.Nickname = Nickname);    
                 var newNick = discordMember.Nickname;
                 await ctx.Channel.SendMessageAsync($"{ctx.Member.Username} beaming succesful").ConfigureAwait(false);
                 newNick = "";
